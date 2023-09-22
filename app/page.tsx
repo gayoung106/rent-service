@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Hero from "@/components/Hero";
-import { SearchBar, CustomFilter, CarCard } from "@/components";
+import { SearchBar, CustomFilter, CarCard, ShowMore } from "@/components";
 import { fetchCars } from "@/utils";
 import { fuels, yearsOfProduction } from "@/constants";
 
@@ -35,15 +35,21 @@ export default async function Home({ searchParams }) {
         {!isDataEmpty ? (
           <section>
             <div className="home__cars-wrapper">
-              {allCars?.map((car) => (
-                <CarCard car={car} />
+              {allCars?.map((car, index) => (
+                <CarCard car={car} key={index} />
               ))}
             </div>
+
+            <ShowMore
+              pageNumber={(searchParams.limit || 10) / 10}
+              isNext={(searchParams.limit || 10) > allCars.length}
+            />
           </section>
         ) : (
           <div className="home__error-container">
-            <h2 className="text-black text-xl font-bold">
-              오, 해당 브랜드의 상품은 존재하지 않습니다.
+            <h2 className="text-gray-700 text-xl font-bold">
+              이런, 해당 브랜드의 상품은 존재하지 않습니다(브랜드와 모델명을
+              정확하게 입력해주세요).
             </h2>
             <p>{allCars?.message}</p>
           </div>
