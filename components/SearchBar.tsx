@@ -40,6 +40,12 @@ const SearchBar = () => {
       searchParams.delete("manufacturer");
     }
 
+    if (manufacturer) {
+      searchParams.set("manufacturer", manufacturer);
+    } else {
+      searchParams.delete("manufacturer");
+    }
+
     const newPathname = `${
       window.location.pathname
     }?${searchParams.toString()}`;
