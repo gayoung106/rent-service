@@ -1,17 +1,49 @@
-import Image from "next/image";
-import Hero from "@/components/Hero";
-import { SearchBar, CustomFilter, CarCard, ShowMore } from "@/components";
+import { Hero, SearchBar, CustomFilter, CarCard, ShowMore } from "@/components";
 import { fetchCars } from "@/utils";
-import { fuels, yearsOfProduction } from "@/constants";
+import { fuels, manufacturers, yearsOfProduction } from "@/constants";
+import { useEffect, useState } from "react";
 
 export default async function Home({ searchParams }) {
   const allCars = await fetchCars({
     manufacturer: searchParams.manufacturer || "",
-    model: searchParams.model || 2022,
-    year: searchParams.year || "",
-    fuel: searchParams.fuel || 10,
-    limit: searchParams.limit || "",
+    year: searchParams.year || 2022,
+    fuel: searchParams.fuel || "",
+    limit: searchParams.limit || 10,
+    model: searchParams.model || "",
   });
+
+  // "use client"일 경우
+  // const [allCars, setAllCars] = useState([]);
+  // const [loading, setLoading] = useState(false);
+
+  // const [munufacturer, setManufacturer] = useState("");
+  // const [model, setModel] = useState("");
+
+  // const [fuel, setFuel] = useState("");
+  // const [year, setYear] = useState(2022);
+
+  // const [limit, setLimit] = useState(10);
+
+  // const getCars = async () => {
+  //   try {
+  //     const result = await fetchCars({
+  //       munufacturer: munufacturer || "",
+  //       model: model || "",
+  //       year: year || 2022,
+  //       fuel: fuel || "",
+  //       limit: limit || 10,
+  //     });
+  //     setAllCars(result);
+  //   } catch (error) {
+  //     console.log(error);
+  //   } finally {
+  //     console.log(false);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   getCars();
+  // }, [fuel, year, limit, munufacturer, model]);
 
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
 
