@@ -12,7 +12,7 @@ export default async function Home({ searchParams }: HomeProps) {
     model: searchParams.model || "",
   });
 
-  // console.log(allCars);
+  console.log(allCars);
 
   // "use client"일 경우
   // const [allCars, setAllCars] = useState([]);
