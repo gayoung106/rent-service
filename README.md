@@ -1,6 +1,16 @@
 # rent-service
 
-## settings
+## Stack
+
+React
+TypeScript
+Next JS
+
+## Demo
+
+https://gazero-rent-car.vercel.app/
+
+## Settings
 
 ```
 npx create-next-app@latest ./
@@ -14,23 +24,16 @@ run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun run dev
 ```
 
 Open: [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 start editing the page: `app/page.tsx`.
 
-## library
+## Library
 
 https://headlessui.com/
 
 ```
 npm install @headlessui/react
-
 ```
