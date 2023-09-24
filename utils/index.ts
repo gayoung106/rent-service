@@ -22,10 +22,9 @@ export async function fetchCars(filters: FilterProps) {
 
 export const calculateCarRent = (city_mpg: number, year: number) => {
   const basePricePerDay = 70000; // 하루에 빌리는 기본료
-  const mileageFactor = 0.1; // Additional rate per mile driven
-  const ageFactor = 0.05; // Additional rate per year of vehicle age
+  const mileageFactor = 100;
+  const ageFactor = 5;
 
-  // Calculate additional rate based on mileage and age
   const mileageRate = city_mpg * mileageFactor;
   const ageRate = (new Date().getFullYear() - year) * ageFactor;
 
@@ -33,7 +32,7 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
   const rentalRatePerDay = basePricePerDay + mileageRate + ageRate;
 
   // 백의 자리에서 내림하고 항상 XX,000 형식으로 출력
-  const formattedRatePerDay = Math.floor(rentalRatePerDay / 100) * 100;
+  const formattedRatePerDay = Math.floor(rentalRatePerDay / 1000) * 1000;
 
   return formattedRatePerDay.toLocaleString("en-US");
 };

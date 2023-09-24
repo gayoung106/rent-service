@@ -12,7 +12,7 @@ export default async function Home({ searchParams }: HomeProps) {
     model: searchParams.model || "",
   });
 
-  console.log(allCars);
+  // console.log(allCars);
 
   // "use client"일 경우
   // const [allCars, setAllCars] = useState([]);
@@ -54,8 +54,8 @@ export default async function Home({ searchParams }: HomeProps) {
       <Hero />
       <div className="mt-12 padding-x padding-y max-width" id="discover">
         <div className="home__text-container">
-          <h1 className="text-4xl font-extrabold">Car Catalogue</h1>
-          <p>당신의 자동차를 찾아보세요.</p>
+          <h1 className="text-4xl font-extrabold">Search a Car</h1>
+          <p>원하는 자동차를 선택하세요</p>
         </div>
         <div className="home__filters">
           <SearchBar />
